@@ -26,7 +26,10 @@ return new class extends Migration
             $table->string('name',100);
             $table->string('price',50);
             $table->string('unit',50);
+            $table->unsignedInteger('quantity')->default('0');
             $table->string('img_url');
+            $table->enum('status', ['active', 'inactive'])->default('active');
+
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

@@ -35,9 +35,9 @@ class UserController extends Controller {
     function UserDashboardPage(): View {
         return view( 'pages.dashboard.dashboard' );
     }
-    
+
     function ProfilePage(): View {
-        return view( 'pages.dashboard.profile-page' );
+        return view( 'pages.dashboard.profile' );
     }
 
     // Logic
@@ -152,7 +152,7 @@ class UserController extends Controller {
     }
 
     function UserLogout() {
-        return redirect( '/login' )->cookie( 'token', '', -1 );
+        return redirect( '/' )->cookie( 'token', '', -1 );
     }
 
     function UserProfile( Request $request ) {
@@ -183,9 +183,9 @@ class UserController extends Controller {
 
         } catch ( Exception $exception ) {
             return response()->json( array(
-                'status'  => 'fail',
+                'status'  => 'error',
                 'message' => 'Something Went Wrong',
-            ), 200 );
+            ), 401 );
         }
 
     }
