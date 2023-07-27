@@ -1,4 +1,5 @@
 @extends('layout.dashboard')
 @section('content')
-    @include('components.dashboard.customers.create')
+    @include('components.customer.customer-list')
 @endsection
+

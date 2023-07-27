@@ -10,7 +10,7 @@ use Illuminate\View\View;
 class ProductController extends Controller {
     /* Pages */
     function ProductPage(): View {
-        return view( 'pages.dashboard.products.index' );
+        return view( 'pages.dashboard.product.index' );
     }
 
     /* Create Product */

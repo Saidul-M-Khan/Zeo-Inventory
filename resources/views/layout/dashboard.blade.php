@@ -18,19 +18,16 @@
         <link href="{{ asset('css/fontawesome.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/toastify.min.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
-        <link
-            href="{{ asset('css/datatables-select.min.css') }}"
-            rel="stylesheet"
-        />
 
-        <script src="{{asset('js/jquery.min.js')}}"></script>
-    <script src="{{asset('js/toastify-js.js')}}"></script>
-    <script src="{{asset('js/axios.min.js')}}"></script>
-    <script src="{{asset('js/config.js')}}"></script>
-    <script src="{{asset('js/bootstrap.bundle.js')}}"></script>
-    <script src="{{asset('js/datatables.min.js')}}"></script>
-    <script src="{{asset('js/datatables-select.min.js')}}"></script>
+        <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/datatables-select.min.css') }}"rel="stylesheet" />
+
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/datatables.min.js') }}"></script>
+        <script src="{{ asset('js/datatables-select.min.js') }}"></script>
+        <script src="{{ asset('js/toastify-js.js') }}"></script>
+        <script src="{{ asset('js/axios.min.js') }}"></script>
+        <script src="{{ asset('js/config.js') }}"></script>
     </head>
     <body>
         @include('components.loader')

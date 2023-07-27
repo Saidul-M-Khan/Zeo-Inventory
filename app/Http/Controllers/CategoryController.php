@@ -2,16 +2,30 @@
 
 namespace App\Http\Controllers;
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller {
     function CategoryPage() {
-        return view( 'pages.dashboard.categories.index' );
+        return view( 'pages.dashboard.category.index' );
     }
 
     function CategoryList( Request $request ) {
-        $user_id = $request->header( 'id' );
-        return Category::where( 'user_id', $user_id )->get();
+        try {
+            $user_id    = $request->header( 'id' );
+            $categories = Category::where( 'user_id', $user_id )->get();
+
+            return response()->json( array(
+                'status'  => 'success',
+                'message' => 'Request Successful',
+                'data'    => $categories,
+            ), 200 );
+        } catch ( Exception $exception ) {
+            return response()->json( array(
+                'status'  => 'error',
+                'message' => 'Something Went Wrong',
+            ), 401 );
+        }
     }
 
     function CategoryCreate( Request $request ) {

@@ -1,14 +1,16 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get( '/', function () {
-    return view( 'welcome' );
+    return view( 'home' );
 } );
 
 Route::get( '/about-us', function () {
@@ -57,34 +59,38 @@ Route::controller( DashboardController::class )->group( function () {
 Route::controller( CustomerController::class )->group( function () {
     Route::middleware( array( TokenVerificationMiddleware::class ) )->group( function () {
         // Pages
-        Route::get( "customers/create", 'CustomerCreatePage' );
+        Route::get( "customers", 'CustomerPage' );
         // Logic
-        Route::get( "/list-customer", 'CustomerList' );
+        Route::get( "/CustomerList", 'CustomerList' );
         Route::post( "/CustomerCreate", 'CustomerCreate' );
-        Route::post( "/delete-customer", 'CustomerDelete' );
-        Route::post( "/update-customer", 'CustomerUpdate' );
+        Route::post( "/CustomerDelete", 'CustomerDelete' );
+        Route::post( "/CustomerUpdate", 'CustomerUpdate' );
     } );
 } );
 
 // Category API
 Route::controller( CategoryController::class )->group( function () {
     Route::middleware( array( TokenVerificationMiddleware::class ) )->group( function () {
+        // Pages
+        Route::get( "/categories", 'CategoryPage' );
         // Logic
-        Route::get( "/list-category", 'CategoryList' );
-        Route::post( "/create-category", 'CategoryCreate' );
-        Route::post( "/delete-category", 'CategoryDelete' );
-        Route::post( "/update-category", 'CategoryUpdate' );
+        Route::get( "/CategoryList", 'CategoryList' );
+        Route::post( "/CategoryCreate", 'CategoryCreate' );
+        Route::post( "/CategoryDelete", 'CategoryDelete' );
+        Route::post( "/CategoryUpdate", 'CategoryUpdate' );
     } );
 } );
 
 // Product API
 Route::controller( ProductController::class )->group( function () {
     Route::middleware( array( TokenVerificationMiddleware::class ) )->group( function () {
+        // Pages
+        Route::get( "/products", 'ProductPage' );
         // Logic
-        Route::get( "/list-product", 'ProductList' );
-        Route::post( "/create-product", 'CreateProduct' );
-        Route::post( "/delete-product", 'DeleteProduct' );
-        Route::post( "/update-product", 'UpdateProduct' );
+        Route::get( "/ProductList", 'ProductList' );
+        Route::post( "/CreateProduct", 'CreateProduct' );
+        Route::post( "/DeleteProduct", 'DeleteProduct' );
+        Route::post( "/UpdateProduct", 'UpdateProduct' );
     } );
 } );
 
@@ -93,6 +99,7 @@ Route::controller( ProductController::class )->group( function () {
 // Sales API
 Route::controller( SaleController::class )->group( function () {
     Route::middleware( array( TokenVerificationMiddleware::class ) )->group( function () {
+        Route::get( "/sales", 'SalesPage' );
         // Logic
         Route::get( "/getSalesInfo", 'getSalesInfo' );
     } );

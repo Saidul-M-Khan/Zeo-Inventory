@@ -1,4 +1,4 @@
 @extends('layout.dashboard')
 @section('content')
-    @include('components.product.product-list')
+    @include('components.sale.sale-list')
 @endsection

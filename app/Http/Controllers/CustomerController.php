@@ -8,7 +8,7 @@ use Illuminate\View\View;
 
 class CustomerController extends Controller {
     function CustomerPage(): View {
-        return view( 'pages.dashboard.customers.index' );
+        return view( 'pages.dashboard.customer.index' );
     }
 
     function CustomerCreate( Request $request ) {
